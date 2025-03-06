@@ -42,13 +42,15 @@ def main():
         while True:
             if check_stock():
                 print("Product is in stock!")
+                # close the browser first
+                driver.quit()
                 os.system(f"start firefox {url}") # REPLACE "firefox" WITH THE NAME OF YOUR FIREFOX FORK (E.G. "waterfox" or "floorp") IF YOU ARE USING ONE
                 # Play sound (adjust path to your audio file)
                 playsound('alert.wav')  # Make sure to have an alert.wav file in the same directory. Recommend something very loud, or you can use the one I've provided. Headphone users beware!        
                 break
             else:
                 print("Product still out of stock, refreshing...")
-                sleep(1)  # Wait 1 second before refreshing
+                sleep(3)  # Wait 1 second before refreshing
                 driver.refresh()
                 
     except Exception as e:
